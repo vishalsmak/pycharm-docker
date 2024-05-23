@@ -1,0 +1,13 @@
+version: '3.8'  # Using Docker Compose file format version 3.8
+
+services:
+  pycharm:
+    image: pycharm-dev:latest  # Use an environment variable for the image version
+    container_name: pycharm-container  # Placeholder for dynamic names
+    environment:
+      - DISPLAY=${DISPLAY}  # Forwarding the display environment variable
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix  # X11 socket for GUI applications
+      - ~/.config/JetBrains/PyCharmCE2024.1:/home/developer/.config/JetBrains/PyCharmCE2024.1  # PyCharm configuration
+      - ~/.local/share/JetBrains/PyCharmCE2024.1:/home/developer/.local/share/JetBrains/PyCharmCE2024.1  # JetBrains shared data
+    restart: "no"  # Do not automatically restart
